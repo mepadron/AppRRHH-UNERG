@@ -52,13 +52,32 @@ angular.module('starter.controllers', [])
 
 
     })
-    .controller("LoginCtrl", function($scope ,$state,$timeout){
+    .controller("LoginCtrl", function($scope ,$state,$timeout,$http,$httpParamSerializerJQLike){
         //$scope.logo='img/logo-unerg-750.png'
-        $scope.loginData=[];
+        //$scope.loginData=[];
+        $scope.data={};
         $scope.logo='img/UNERG.jpg';
 
-        $scope.doLogin= function(){
-            alert($scope.loginData.username+" "+$scope.loginData.password);
+
+
+        $scope.doLogin= function(data2){
+            // $scope.username="";
+            //$scope.password="";
+            //var data=JSON.stringify(data);
+            $http({
+                method: 'POST',
+                url: 'http://rrhh.unerg.edu.ve/movil/login',
+                data: $httpParamSerializerJQLike(data2),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded','Access-Control-Allow-Control':'*'}
+            })
+                .success(function(response) {
+                    // handle success things
+                    console.log(response);
+                })
+                .error(function(data, status, headers, config) {
+                    // handle error things
+                    console.error(data,status);
+                })
         };
 
     })
