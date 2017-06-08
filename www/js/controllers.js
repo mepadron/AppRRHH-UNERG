@@ -56,6 +56,7 @@ angular.module('starter.controllers', [])
         //$scope.logo='img/logo-unerg-750.png'
         //$scope.loginData=[];
         $scope.data={};
+        $scope.datapersonal= [];
         $scope.logo='img/UNERG.jpg';
 
 
@@ -72,12 +73,22 @@ angular.module('starter.controllers', [])
             })
                 .success(function(response) {
                     // handle success things
-                    console.log(response);
+                    //console.log(response);
+                    //console.log(response.status);
+                    if (response.status=="success") {
+                        //console.log(response);
+                        $scope.datapersonal = response;
+                        console.log($scope.datapersonal.data.User.nombres);
+                        $state.go('app.playlists',response.data);
+                    }if(response.status=="error") {
+                        console.log(response.mensaje);
+                        alert(response.mensaje);
+                    }
                 })
                 .error(function(data, status, headers, config) {
                     // handle error things
                     console.error(data,status);
-                })
+                });
         };
 
     })
