@@ -65,7 +65,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             })
             .state('app.playlists', {
-                url: '/playlists',
+                url: '/playlists/:user/:ape/:cedula/:token',
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/playlists.html',
