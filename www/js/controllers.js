@@ -78,8 +78,8 @@ angular.module('starter.controllers', [])
                     if (response.status=="success") {
                         //console.log(response);
                         $scope.datapersonal = response;
-                        console.log($scope.datapersonal.data.User.nombres);
-                        $state.go('app.playlists',response.data);
+                        console.log($scope.datapersonal.data.User.nombres+" "+ $scope.datapersonal.data.User.id+" "+$scope.datapersonal.data.User.password);
+                        $state.go('app.playlists',{user:$scope.datapersonal.data.User.nombres,ape:$scope.datapersonal.data.User.apellidos,cedula:$scope.datapersonal.data.User.id,token:$scope.datapersonal.data.User.password});
                     }if(response.status=="error") {
                         console.log(response.mensaje);
                         alert(response.mensaje);
@@ -92,7 +92,7 @@ angular.module('starter.controllers', [])
         };
 
     })
-    .controller('PlaylistsCtrl', function($scope) {
+    .controller('PlaylistsCtrl', function($scope,$state,$timeout,$http,$stateParams) {
         $scope.playlists = [
             { title: 'Reggae', id: 1 },
             { title: 'Chill', id: 2 },
@@ -101,6 +101,11 @@ angular.module('starter.controllers', [])
             { title: 'Rap', id: 5 },
             { title: 'Cowbell', id: 6 }
         ];
+        $scope.NombreUser=$stateParams.user;
+        $scope.ApellidoUser=$stateParams.ape;
+        $scope.Cedula=$stateParams.cedula;
+        $scope.Token=$stateParams.token;
+       // console.log($scope.NombreUser)
     })
 
     .controller('PlaylistCtrl', function($scope, $stateParams) {
