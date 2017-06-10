@@ -1,10 +1,41 @@
-<ion-view view-title="Playlists">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
-      </ion-item>
-    </ion-list>
-    {{NombreUser}} {{ApellidoUser}} {{Cedula}} {{Token}}
-  </ion-content>
-</ion-view>
+
+<ion-header-bar>
+<h1 class="title">Consultar</h1>
+<div class="buttons">
+    <button class="button button-clear" ng-click="closeLogin()">Close</button>
+</div>
+</ion-header-bar>
+<ion-content class="has-subheader padding">
+<div class="logo_publi">
+    <img ng-src={{logo}} height="100" width="120"><br>
+    {{NombreUser}} {{ApellidoUser}}
+    <form ng-submit="doYear()">
+        <div class="list">
+            <label class="item item-input">
+                <!-- <span class="input-label">Cedula</span>-->
+                <input type="hidden" ng-model="Cedula" required>
+            </label>
+            <label class="item item-input">
+                <!-- <span class="input-label">Token</span>-->
+                <input type="hidden" ng-model="Token" required>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Consultar
+                </div>
+                <select ng-model="Year"  ng-options="option for option in listOfOptions" required>
+                    <option value="">Año</option>
+                    <!-- <option>2017</option>
+                        <option>2016</option>-->
+
+                </select>
+            </label>
+            <label class="item">
+                <button class="button button-block button-positive" type="submit">Consultar</button>
+            </label>
+        </div>
+    </form>
+
+</div>
+</ion-content>
+

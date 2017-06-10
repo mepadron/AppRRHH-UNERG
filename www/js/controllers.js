@@ -92,7 +92,7 @@ angular.module('starter.controllers', [])
         };
 
     })
-    .controller('PlaylistsCtrl', function($scope,$state,$timeout,$http,$stateParams) {
+    .controller('PlaylistsCtrl', function($scope,$state,$timeout,$http,$stateParams,$httpParamSerializerJQLike) {
         $scope.playlists = [
             { title: 'Reggae', id: 1 },
             { title: 'Chill', id: 2 },
@@ -101,11 +101,32 @@ angular.module('starter.controllers', [])
             { title: 'Rap', id: 5 },
             { title: 'Cowbell', id: 6 }
         ];
+        $scope.logo='img/UNERG.jpg';
         $scope.NombreUser=$stateParams.user;
         $scope.ApellidoUser=$stateParams.ape;
         $scope.Cedula=$stateParams.cedula;
         $scope.Token=$stateParams.token;
-       // console.log($scope.NombreUser)
+        //$scope.year= $httpParamSerializerJQLike($scope.Year);
+        $scope.listOfOptions = ['2015', '2016', '2017'];
+        // console.log($scope.NombreUser)
+
+        $scope.doYear=function(){
+            //console.log(dataYear);
+            // alert(this.Year);
+            console.log($scope.NombreUser+" "+ $scope.ApellidoUser+" "+$scope.Cedula+" "+$scope.Token+" "+this.Year);
+            $http.get("http://rrhh.unerg.edu.ve/movil/recibos/"+$scope.Cedula+"/"+$scope.Token+"/"+this.Year)
+                .success(function(response){
+                    if (response.status=="success"){
+                        console.log(response);
+                    }
+
+                }).error(function(data, status, headers, config) {
+                    // handle error things
+                    console.error(data,status);
+                });
+        };
+
+
     })
 
     .controller('PlaylistCtrl', function($scope, $stateParams) {
