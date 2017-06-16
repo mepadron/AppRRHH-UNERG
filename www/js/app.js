@@ -73,7 +73,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     }
                 }
             })
-
+            .state('app.recibosAll', {
+                url: '/recibosAll/:cedula/:token/:year',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/recibosAll.html',
+                        controller: 'recibosAllCtrl',
+                        //params:[r:null]
+                    }
+                }
+            })
             .state('app.single', {
                 url: '/playlists/:playlistId',
                 views: {
