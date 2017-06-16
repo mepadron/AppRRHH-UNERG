@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', [ 'angular.filter' ])
 
     .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -92,7 +92,7 @@ angular.module('starter.controllers', [])
         };
 
     })
-    .controller('PlaylistsCtrl', function($scope,$state,$timeout,$http,$stateParams) {
+    .controller('PlaylistsCtrl', function($scope,$state,$timeout,$http,$stateParams,$httpParamSerializerJQLike) {
         $scope.playlists = [
             { title: 'Reggae', id: 1 },
             { title: 'Chill', id: 2 },
@@ -101,12 +101,66 @@ angular.module('starter.controllers', [])
             { title: 'Rap', id: 5 },
             { title: 'Cowbell', id: 6 }
         ];
+        $scope.logo='img/UNERG.jpg';
         $scope.NombreUser=$stateParams.user;
         $scope.ApellidoUser=$stateParams.ape;
         $scope.Cedula=$stateParams.cedula;
         $scope.Token=$stateParams.token;
-       // console.log($scope.NombreUser)
+        //$scope.year= $httpParamSerializerJQLike($scope.Year);
+        $scope.listOfOptions = ['2015', '2016', '2017'];
+        // console.log($scope.NombreUser)
+
+        $scope.doYear=function(){
+            //console.log(dataYear);
+            // alert(this.Year);
+            console.log($scope.NombreUser+" "+ $scope.ApellidoUser+" "+$scope.Cedula+" "+$scope.Token+" "+this.Year);
+            $state.go('app.recibosAll',{cedula:$scope.Cedula,token:$scope.Token,year:this.Year});
+        };
+
+
     })
 
-    .controller('PlaylistCtrl', function($scope, $stateParams) {
+    .controller('recibosAllCtrl', function($scope, $stateParams,$http) {
+        $scope.dataRecibos=[];
+        $scope.byTime = [];
+        $http.get("http://rrhh.unerg.edu.ve/movil/recibos/"+$stateParams.cedula+"/"+$stateParams.token+"/"+$stateParams.year)
+            .success(function(response){
+                if (response.status=="success"){
+                    var hasta=0;
+                    //console.log(response);
+                    //console.log(response.data);
+                    //console.log(response.data.Nomina[0].hasta);
+                    //console.log(response.data.Nomina.length);
+                    //console.log(response.data.User);
+                    //var dataRecibos = angular.toJson(response);
+                    //$state.go('app.recibosAll',{r:response});
+                    $scope.dataRecibos=response;
+                    /*for (var i=0;i<=response.data.Nomina.length;i++){
+                    //console.log(response.data.Nomina[i].hasta);
+                        console.log(response.data.Nomina[i].hasta);
+                        var obj = response.data.Nomina[i];
+                        for (var key in obj){
+                            var value = obj[key];
+                             console.log( key + ": " + value);
+                        }
+                    }*/
+                    Array.prototype.groupBy = function(prop) {
+                        return this.reduce(function(groups, item) {
+                            var val = item[prop];
+                            groups[val] = groups[val] || [];
+                            groups[val].push(item);
+                            return groups;
+                        },{});
+                    };
+                    $scope.byTime = response.data.Nomina.groupBy('hasta');
+                    console.log($scope.byTim);
+                    /*angular.forEach($scope.dataRecibos.Nomina, function(value, key){
+                        console.log(key + ': ' + value);
+                    });*/
+                }
+
+            }).error(function(data, status, headers, config) {
+                // handle error things
+                console.error(data,status);
+            });
     });
