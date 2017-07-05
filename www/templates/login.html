@@ -5,10 +5,10 @@
     <button class="button button-clear" ng-click="closeLogin()">Close</button>
 </div>
 </ion-header-bar>
-<ion-content class="has-subheader padding" ng-controller="LoginCtrl">
+<ion-content ng-controller="LoginCtrl">
 <div class="logo_publi">
     <img ng-src={{logo}} height="140" width="150">
-
+    <div class="titulo_app"><b> DIRECCIÓN DE RECURSOS HUMANOS <br>SISTEMA INTEGRAL DE INFORMACIÓN LABORAL</b></div>
     <form ng-submit="doLogin(data)">
         <div class="list">
             <label class="item item-input">
@@ -20,11 +20,17 @@
                 <input type="password" ng-model="data.password" required>
             </label>
             <label class="item">
-                <button class="button button-block button-positive" type="submit">Log in</button>
+                <button cg-busy="login" class="button button-block button-positive" type="submit">Entrar</button>
             </label>
         </div>
     </form>
-
+    <div class="titulo_app_pie"><b> Si es primera vez que ingresa, use su <br>número de cédula en ambos campos.</b></div>
+    <label class="item item-inputi transp">
+        
+    </label>
+    <label class="item item-inputi transp">
+        
+    </label>
 </div>
 </ion-content>
 
