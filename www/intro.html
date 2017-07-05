@@ -1,14 +1,17 @@
 <ion-view view-title="Intro-apps" ng-controller="IntroCtrl">
 
-<ion-pane>
+<ion-pane class="fondo">
 
    <div class="loader">Loading...</div>
     <div id="wrapper">    
-       <img ng-src={{logo}} >
+        <div class="logo" style="z-index:20;">
+            <img ng-src={{logo}} >
+        </div>
        </div>
     <!-- header -->
     <ion-nav-view></ion-nav-view>
 	    
+        
 
     </ion-pane>
 

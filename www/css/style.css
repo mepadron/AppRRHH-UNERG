@@ -131,18 +131,31 @@ label.item.item-inputi.transp {
 }
 .item.item-divider.item-text-wrap.titulo {
     background: url(../img/titulos.png) no-repeat center center !important;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
+    -webkit-background-size: 100% !important;
+    -moz-background-size: 100% !important;
     color:#fff !important;
 }
 .item.item-divider.titulo {
     background: url(../img/titulos.png) no-repeat center center !important;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
+    -webkit-background-size: 100% !important;
+    -moz-background-size: 100% !important;
     color:#fff !important;
 }
-.mes{
+.fondo {
+    background: url(../img/Intro_fondo.gif) no-repeat center center !important;
+    -webkit-background-size: 100% !important;
+    -moz-background-size: 100% !important;
+}
+.mes,.detalle{
     color:#fff !important;
+}
+.ultimoIngreso.ng-binding {
+    font-size: 10px !important;
+    font-weight: bold !important;
+    color:#fff !important;
+    text-align: center;
+    background-color: #428bca;
+    margin-top: 5px !important;
 }
 .year{
     color:#fff !important;
@@ -157,11 +170,17 @@ label.item.item-inputi.transp {
     height: 50px !important;
     font-size: 10px !important;
 }
+.cell-3 {
+    background-color: #D67C7C !important;
+    height: 50px !important;
+    font-size: 10px !important;
+    color:#fff !important;
+}
 .cell-p {
     background-color: #F5F5F5 !important;
-    
+
 }
 .cell-s {
     background-color: #D4D0C8 !important;
-    
+
 }

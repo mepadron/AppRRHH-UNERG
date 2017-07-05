@@ -13,19 +13,19 @@ angular.module('starter.controllers', [ 'angular.filter' ])
         $scope.loginData = {};
 
         // Create the login modal that we will use later
-        $ionicModal.fromTemplateUrl('templates/login.html', {
+        $ionicModal.fromTemplateUrl('templates/acerca.html', {
             scope: $scope
         }).then(function(modal) {
             $scope.modal = modal;
         });
 
         // Triggered in the login modal to close it
-        $scope.closeLogin = function() {
+        $scope.closeAcerca = function() {
             $scope.modal.hide();
         };
 
         // Open the login modal
-        $scope.login = function() {
+        $scope.acerca= function() {
             $scope.modal.show();
         };
 
@@ -36,19 +36,24 @@ angular.module('starter.controllers', [ 'angular.filter' ])
             // Simulate a login delay. Remove this and replace with your login
             // code if using a login system
             $timeout(function() {
-                $scope.closeLogin();
+                $scope.closeAcerca();
             }, 1000);
         };
+        $scope.salir = function(){
+            ionic.Platform.exitApp(); // para la aplicacion
+
+        }
     })
 
 
     .controller("IntroCtrl", function($scope ,$state,$timeout){
         //$scope.logo='img/logo-unerg-750.png'
 
-        $scope.logo='img/UNERG.jpg';
+        $scope.logo='img/UNERG.png';
+        $scope.intro_fondo='img/Intro_fondo.gif';
         setTimeout(function(){
             $state.go('Logins');
-        },9000);
+        },20000);
 
 
     })
@@ -122,7 +127,7 @@ angular.module('starter.controllers', [ 'angular.filter' ])
             $timeout(function() {
                 $ionicLoading.hide();
 
-              $state.go('app.recibosAll',{cedula:$scope.Cedula,token:$scope.Token,year:this.Year});
+                $state.go('app.recibosAll',{cedula:$scope.Cedula,token:$scope.Token,year:this.Year});
             }, 4000);
         };
 
@@ -195,6 +200,12 @@ angular.module('starter.controllers', [ 'angular.filter' ])
 
                     //$scope.reciboDetalleVista = response.data.Detalle.groupBy('tipo');
                     console.log($scope.reciboDetalleVista);
+
+                    $scope.Nombres=$scope.reciboDetalleVista.User[0].nombres;
+
+                    $scope.Apellidos=$scope.reciboDetalleVista.User[0].apellidos;
+
+                    $scope.Cedula=$scope.reciboDetalleVista.User[0].id;
 
                 }
 
