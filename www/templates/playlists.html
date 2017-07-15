@@ -1,23 +1,24 @@
-
+<ion-view view-title="Consulta por años">
 <ion-header-bar>
 <h1 class="title">Consultar</h1>
 <div class="buttons">
     <button class="button button-clear" ng-click="closeLogin()">Close</button>
 </div>
 </ion-header-bar>
-<ion-content class="has-subheader padding">
+<ion-content>
 <div class="logo_publi">
     <img ng-src={{logo}} height="100" width="120"><br>
-    {{NombreUser}} {{ApellidoUser}}
+    <div class="titulo_app"><b> DIRECCIÓN DE RECURSOS HUMANOS <br>SISTEMA INTEGRAL DE INFORMACIÓN LABORAL</b></div>
+
+
     <form ng-submit="doYear()">
         <div class="list">
-            <label class="item item-input">
-                <!-- <span class="input-label">Cedula</span>-->
-                <input type="hidden" ng-model="Cedula" required>
+            <label class="item item-inputi fondo_azul">
+                Trabajador:<br>
+                {{NombreUser}} {{ApellidoUser}}
             </label>
-            <label class="item item-input">
-                <!-- <span class="input-label">Token</span>-->
-                <input type="hidden" ng-model="Token" required>
+            <label class="item item-inputi fondo_azul ingHora">
+                Último ingreso al sistemas:{{ingresoHora}}
             </label>
             <label class="item item-input item-select">
                 <div class="input-label">
@@ -33,9 +34,19 @@
             <label class="item">
                 <button class="button button-block button-positive" type="submit">Consultar</button>
             </label>
+
         </div>
     </form>
+    <label class="item item-inputi transp">
 
+    </label>
+    <label class="item item-inputi transp">
+
+    </label>
 </div>
+<script id="resp.html" type="text/ng-template">
+<ion-spinner icon="bubbles"></ion-spinner>
+            <p>Por favor espera <br> Cargue los Datos...</p>
+</script>
 </ion-content>
-
+</ion-view>

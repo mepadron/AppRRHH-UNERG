@@ -1,0 +1,73 @@
+<ion-view view-title="Detalle Recibo">
+<ion-header-bar>
+<h1 class="title">Login</h1>
+<div class="buttons">
+    <button class="button button-clear" ng-click="closeLogin()">Close</button>
+</div>
+</ion-header-bar>
+<ion-content>
+<div class="list">
+    <div class="item item-divider item-text-wrap titulo">
+        <b> Trabajador</b>
+    </div>
+    <div class="item item-divider item-text-wrapi cell-p">
+        Identificación: {{Cedula}}
+    </div>
+    <div class="item item-divider item-text-wrap cell-s">
+        Nombres y Aplellidos: {{Nombres}} {{Apellidos}}
+    </div>
+</div>
+<div class="list">
+
+    <div class="item item-divider titulo">
+        <b>Detalles del Recibo</b>
+    </div>
+    <li class="item">
+        <div class="row">
+            <div class="col fondo_azul"><center><b>Concepto</b></center></div>
+            <div class="col fondo_azul"><center><b>Tipo</b></center></div>
+            <div class="col fondo_azul"><center><b>Monto</b></center></div>
+
+        </div>
+        <div class="row" ng-repeat="rr in reciboDetalleVista.Detalle">
+            <div class="col item-text-wrap cell-1" style="text-align:left">{{rr.rubro}}</div>
+            <div class="col cell-2"><center>{{rr.tipo}}</center></div>
+            <div class="col cell-1" style="text-align:right">{{rr.monto}}</div>
+        </div>
+    </li>
+
+    <div class="row">
+        <div class="col col-80 cell-p" style="color:blue; text-align:right">TOTAL DE ASIGNACIONES:</div>
+        <div class="col col-20 cell-1" style="text-align:right;color:blue">{{reciboDetalleVista.asignaciones}}</div>
+
+    </div>
+    <div class="row">
+        <div class="col col-80 cell-s" style="color:red; text-align:right">TOTAL DE DEDUCCIONES:</div>
+        <div class="col col-20 cell-3" style="text-align:right">{{reciboDetalleVista.deducciones}}</div>
+
+    </div>
+    <div class="row">
+        <div class="col col-80 cell-p" style="color:green; text-align:right">TOTAL DE NOMINA:</div>
+        <div class="col col-20 cell-1" style="text-align:right;color:green">{{reciboDetalleVista.neto}}</div>
+
+    </div>
+    <div class="row">
+        <div class="col"><center>ESTE PAGO SE DIVIDE EN QUINCENAS</center></div>
+
+    </div>
+    <div class="row">
+        <div class="col col-80 cell-s" style="color:blue; text-align:right">1era. QUINCENA</div>
+        <div class="col col-20 cell-2" style="text-align:right;color:blue">{{reciboDetalleVista.quincena1}}</div>
+
+    </div>
+    <div class="row">
+        <div class="col col-80 cell-p" style="color:blue; text-align:right">2da. QUINCENA</div>
+        <div class="col col-20 cell-1" style="text-align:right;color:blue">{{reciboDetalleVista.qunicena2}}</div>
+
+    </div>
+    <div class="item item-divider item-text-wrap">
+
+    </div>
+</div>
+</ion-content>
+</ion-view>
