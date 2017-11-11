@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # App movil para RRHH-UNERG, Cosnulta recibo Pago V1.0.0
 
 ## Introduction
@@ -37,4 +36,4 @@ Todo esto es para generar una compilación para obtener el APK, q es el archivo 
 =======
 # AppRRHH-UNERG
 App móvil para la Dir. de RRHH-UNERG EDo. Guárico
->>>>>>> 53fa0c68699ded8233e63235444f29b26a92748a
+
