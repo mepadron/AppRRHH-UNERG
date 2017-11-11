@@ -1,0 +1,56 @@
+<ion-view  view-title="Recibos de  {{yearRecibos | date: 'yyyy' }}" >
+<ion-header-bar>
+<h1 class="title">Login</h1>
+<div class="buttons">
+    <button class="button button-clear" ng-click="closeLogin()">Close</button>
+</div>
+</ion-header-bar>
+<ion-content>
+<div class="list">
+    <div class="ultimoIngreso">
+        Su último acceso fue el:{{userRecibos.ingreso}}
+    </div>
+    <div class="item item-divider item-text-wrap titulo">
+        <b>Trabajador</b>
+    </div>
+    <div class="item item-divider item-text-wrapi cell-p">
+        Identificación: {{userRecibos.id}}
+    </div>
+    <div class="item item-divider item-text-wrap cell-s">
+    Nombres y Aplellidos: {{userRecibos.nombres}} {{userRecibos.apellidos}}
+    </div>
+</div>
+<div class="list">
+
+    <div class="item item-divider titulo">
+        <p class="year">Pagos percibidos el año {{yearRecibos | date: 'yyyy' }}</p>
+    </div>
+    <div class="item item-divider item-text-wrap">
+        <p class="inf-fecha">La fecha del pago puede variar respecto a la fecha de la nómina.</p>
+    </div>
+    <div class="cuerpo-recibo" ng-repeat="(key, value) in dataRecibos">
+        <div class="item item-divider titulo">
+            <p class="mes"><b>{{key | date: 'MMMM' | uppercase}} de {{yearRecibos | date: 'yyyy' }}</b></p>
+        </div>
+        <li class="item">
+            <div class="row">
+                <div class="col fondo_azul"><center>Nómina</center></div>
+                <div class="col fondo_azul"><center>Quince</center></div>
+                <div class="col fondo_azul"><center>Último</center></div>
+                <div class="col fondo_azul"><center>Ver</center></div>
+            </div>
+            <div class="row" ng-repeat="r in value">
+                <div class="col item-text-wrap cell-1">{{r.titulo}}</div>
+                <div class="col cell-2">{{r.quincena1}}</div>
+                <div class="col cell-1">{{r.qunicena2}}</div>
+                <div class="col cell-2"><center><a href="#/app/reciboDetalle/{{r.id}}/{{userRecibos.id}}/{{userRecibos.password}}"><i class="icon ion-plus-circled"></i></a></center></div>
+            </div>
+        </li>
+    </div>
+    <div class="item item-divider item-text-wrap">
+
+    </div>
+
+</div>
+</ion-content>
+</ion-view>
