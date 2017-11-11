@@ -33,7 +33,3 @@ Misc:
     backend : pro
 
 Todo esto es para generar una compilación para obtener el APK, q es el archivo instalación para android, versión 4.0+
-=======
-# AppRRHH-UNERG
-App móvil para la Dir. de RRHH-UNERG EDo. Guárico
-
