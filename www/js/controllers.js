@@ -72,7 +72,7 @@ angular.module('starter.controllers', [ 'angular.filter' ])
             //var data=JSON.stringify(data);
             $scope.login=$http({
                 method: 'POST',
-                url: 'http://rrhh.unerg.edu.ve/movil/login',
+                url: 'http://api',
                 data: $httpParamSerializerJQLike(data2),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded','Access-Control-Allow-Control':'*'}
             })
@@ -139,7 +139,7 @@ angular.module('starter.controllers', [ 'angular.filter' ])
         $scope.yearRecibos=[];
         $scope.userRecibos=[];
         //$scope.byTime = [];
-        $http.get("http://rrhh.unerg.edu.ve/movil/recibos/"+$stateParams.cedula+"/"+$stateParams.token+"/"+$stateParams.year)
+        $http.get("http://api/"+$stateParams.cedula+"/"+$stateParams.token+"/"+$stateParams.year)
             .success(function(response){
                 if (response.status=="success"){
                     var hasta=0;
@@ -177,7 +177,7 @@ angular.module('starter.controllers', [ 'angular.filter' ])
     .controller('reciboDetalleCtrl', function($scope, $stateParams,$http) {
         $scope.reciboDetalle = [];
         $scope.reciboDetalleVista=[];
-        $http.get("http://rrhh.unerg.edu.ve/movil/detalles/"+$stateParams.idRecibo+"/"+$stateParams.Cedula+"/"+$stateParams.Token)
+        $http.get("api/"+$stateParams.idRecibo+"/"+$stateParams.Cedula+"/"+$stateParams.Token)
             .success(function(response){
                 if (response.status=="success"){
                     var hasta=0;
